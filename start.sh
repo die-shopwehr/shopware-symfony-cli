@@ -11,7 +11,12 @@ done
 SCRIPT_PATH=$(dirname "$0")
 cd ${SCRIPT_PATH}
 
-symfony local:php:list
+ENV_FILE=.env
+if [ -f "$ENV_FILE" ]; then
+    echo "$ENV_FILE already exists."
+else
+    cp .env.dist .env
+fi
 
 docker-compose up -d
 

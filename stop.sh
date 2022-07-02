@@ -5,5 +5,5 @@ cd ${SCRIPT_PATH}
 
 docker-compose down
 
-cd ../platform
+cd ..
 symfony server:stop
