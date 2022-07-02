@@ -31,7 +31,8 @@ See: https://symfony.com/doc/current/setup/symfony_server.html#setting-up-the-lo
 ## Setup
 ```
 git clone https://github.com/shopware/platform.git
-git clone symfony-cli-platform
+cd platform
+git clone https://github.com/die-shopwehr/shopware-symfony-cli.git
 chmod +x shopware-symfony-cli/start.sh
 chmod +x shopware-symfony-cli/stop.sh
 
@@ -88,13 +89,15 @@ symfony composer build:js:admin
 ```
 
 ### Run Cypress tests
+#TODO: install mysql
 
 ### Install different PHP Versions
 Run `symfony local:php:list` to see already installed php versions. Install specific version by executing `brew install php@7.4`. You may will have run `local:php:refresh`afterwards.
 
 If you want to switch the system's default, simply run:
 ```
-brew unlink php
+brew unlink php 
+#if specific version is already linked: brew unlink php@8.0 
 brew link php@7.4
 ```
 
