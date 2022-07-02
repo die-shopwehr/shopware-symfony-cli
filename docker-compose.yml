@@ -1,8 +1,5 @@
 version: '3.7'
 
-networks:
-    shopware:
-
 services:
   app_mysql:
     image: mysql:latest
@@ -14,20 +11,6 @@ services:
       MYSQL_PASSWORD: app
     ports:
         - "${MYSQL_PORT}:3306"
-
-  cypress:
-    image: cypress/included:5.6.0
-    tty: true
-    ipc: host
-    environment:
-      - CYPRESS_baseUrl=http://docker.vm:8000
-      - DISPLAY
-    volumes:
-      - ./tests/e2e:/e2e
-      # for Cypress to communicate with the X11 server pass this socket file
-      # in addition to any other mapped volumes
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    entrypoint: /bin/bash
 
   mailhog:
     image: mailhog/mailhog

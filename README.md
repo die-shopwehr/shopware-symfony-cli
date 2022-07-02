@@ -61,9 +61,9 @@ shopware-symfony-cli/start.sh [options]
 
 Examples:
 shopware-symfony-cli/start.sh
-shopware-symfony-cli/start.sh -u sw6.4.12.0 -p 8.0
+shopware-symfony-cli/start.sh -u sw6-4-12-0 -p 8.0
 shopware-symfony-cli/start.sh -p 8.0
-shopware-symfony-cli/start.sh -u sw6.4.12.0
+shopware-symfony-cli/start.sh -u sw6-4-12-0
 ```
 
 ### Stop the server
@@ -76,7 +76,7 @@ shopware-symfony-cli/stop.sh
 
 ## Howto...
 ### Install custom plugins
-Create the `custom/plugins` folder if not existent
+Create the `custom/plugins` folder (in platform) if not already existent
 
 ### Build Storefront
 ```
@@ -89,7 +89,7 @@ symfony composer build:js:admin
 ```
 
 ### Run Cypress tests
-#TODO: install mysql
+Not implemented yet
 
 ### Install different PHP Versions
 Run `symfony local:php:list` to see already installed php versions. Install specific version by executing `brew install php@7.4`. You may will have run `local:php:refresh`afterwards.
@@ -100,4 +100,6 @@ brew unlink php
 #if specific version is already linked: brew unlink php@8.0 
 brew link php@7.4
 ```
+
+You will not have to link a specific Php version when using the start command's option `-p`. In that case a `.php-version` file is going to be created and when prefixing commands with `symfony` the Symfony CLI will always refer the configured version of Php.
 
