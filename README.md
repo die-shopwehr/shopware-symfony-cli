@@ -103,3 +103,8 @@ brew link php@7.4
 
 You will not have to link a specific Php version when using the start command's option `-p`. In that case a `.php-version` file is going to be created and when prefixing commands with `symfony` the Symfony CLI will always refer the configured version of Php.
 
+### Install Php extensions
+```
+symfony pecl install {extension}
+```
+
