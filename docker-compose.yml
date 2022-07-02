@@ -1,0 +1,45 @@
+version: '3.7'
+
+networks:
+    shopware:
+
+services:
+  app_mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+        - '13307:3306'
+
+  #cypress:
+  #  image: cypress/included:5.6.0
+  #  tty: true
+  #  ipc: host
+  #  environment:
+  #    - CYPRESS_baseUrl=http://docker.vm:8000
+  #    - DISPLAY
+  #  networks:
+  #    shopware:
+  #  volumes:
+  #    - ./tests/e2e:/e2e
+  #    # for Cypress to communicate with the X11 server pass this socket file
+  #    # in addition to any other mapped volumes
+  #    - /tmp/.X11-unix:/tmp/.X11-unix
+  #  entrypoint: /bin/bash
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+        - '1025:1025'
+        - '8025:8025'
+
+  elasticsearch:
+    image: elastic/elasticsearch:7.8.0
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ports:
+        - '9200:9200'
+        - '9300:9300'
