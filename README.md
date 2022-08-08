@@ -81,6 +81,7 @@ Create the `custom/plugins` folder (in platform) if not already existent
 ### Build Storefront
 ```
 symfony composer build:js:storefront
+symfony php bin/console theme:compile
 ```
 
 ### Build Administration
