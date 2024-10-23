@@ -18,7 +18,7 @@ else
     cp .env.dist .env
 fi
 
-docker-compose up -d
+docker compose up -d
 
 cd ..
 
